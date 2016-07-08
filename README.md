@@ -12,7 +12,9 @@ If you need to setup tens of services you will end up with some scripts that wil
 # How it works ?
 
 1) Install `docker`
+
 2) Install `docker-compose`
+
 3) Install `docker-services`
 
 4) Create `docker-services.yml` file and define what services you want to run (use these sample ones to test this tool).
