@@ -8,3 +8,8 @@ If you are adopting microservices architecture it means you have a certain numbe
 
 # How it works ?
 
+Create `ds.yml` file and define what services you want to run.
+
+```
+```
+
