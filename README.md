@@ -74,3 +74,5 @@ services:
         image: nildev/mysql:$DOCKER_SERVICES_TAG
         container_name: "mysql.nildev-auth"
 ```
+
+`$DOCKER_SERVICES_TAG` will be substituted by `docker-services` with `branch` value from `docker-services.yml`.
