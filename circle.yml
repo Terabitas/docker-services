@@ -22,9 +22,9 @@ dependencies:
         - ./scripts/release $(./scripts/version) linux --package-only
 
 test:
-    override:
-        - #sudo docker-compose -f docker-compose-develop.yml run dockerServices godep go test ./... -cover -tags=integration
-        - #sudo docker-compose -f docker-compose-develop.yml run dockerServices bash -c 'lint=`golint ./...  | grep -v "^vendor\/" || true`; if [[ -n $lint ]]; then echo "$lint"; false; fi;'
+    #override:
+        # - sudo docker-compose -f docker-compose-develop.yml run dockerServices godep go test ./... -cover -tags=integration
+        # - sudo docker-compose -f docker-compose-develop.yml run dockerServices bash -c 'lint=`golint ./...  | grep -v "^vendor\/" || true`; if [[ -n $lint ]]; then echo "$lint"; false; fi;'
 
     post:
         - mkdir -p $CIRCLE_ARTIFACTS/release
