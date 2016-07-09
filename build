@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+ORG_PATH="github.com/nildev"
+REPO_PATH="${ORG_PATH}/docker-services"
+
+echo "Building docker-services"
+CGO_ENABLED=0 godep go build -o bin/docker-services -a -installsuffix netgo -ldflags '-s'
+chmod +x bin/docker-services

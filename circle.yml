@@ -1,0 +1,38 @@
+machine:
+    timezone: Europe/Berlin
+    services:
+        - docker
+
+dependencies:
+    pre:
+        # Setup Docker
+        - sed "s/<EMAIL>/$DOCKER_EMAIL/;s/<AUTH>/$DOCKER_AUTH/" < .dockercfg.template > ~/.dockercfg
+
+    override:
+        # Build darwin binary
+        - sudo docker-compose -f docker-compose-develop.yml run -e GOOS=darwin -e GOARCH=amd64 project ./build
+
+        # Build darwin release
+        - ./scripts/release $(./scripts/version) darwin --package-only
+
+        # Build linux binary
+        - sudo docker-compose -f docker-compose-develop.yml run -e GOOS=linux -e GOARCH=amd64 project ./build
+
+        # Build linux release tarball
+        - ./scripts/release $(./scripts/version) linux --package-only
+
+test:
+    override:
+        - sudo docker-compose -f docker-compose-develop.yml run dockerServices godep go test ./... -cover -tags=integration
+        - sudo docker-compose -f docker-compose-develop.yml run dockerServices bash -c 'lint=`golint ./...  | grep -v "^vendor\/" || true`; if [[ -n $lint ]]; then echo "$lint"; false; fi;'
+
+    post:
+        - mkdir -p $CIRCLE_ARTIFACTS/release
+        - sudo cp ./release/docker-services-$(./scripts/version)-linux-amd64.tar.gz $CIRCLE_ARTIFACTS/release
+        - sudo cp ./release/docker-services-$(./scripts/version)-darwin-amd64.tar.gz $CIRCLE_ARTIFACTS/release
+
+deployment:
+    release:
+        tag: /v[0-9]+(\.[0-9]+)*/
+        commands:
+            - ./scripts/upload-artifacts $(./scripts/version) ./release

@@ -1,0 +1,23 @@
+#!/bin/bash -e
+
+# export GITHUB_TOKEN=xxxx
+
+if [ -z "$1" ]; then
+	echo "Usage: ${0} VERSION PATH_TO_ARTIFACTS [--replace]" >> /dev/stderr
+	exit 255
+fi
+
+if [ -z "$2" ]; then
+	echo "Usage: ${0} VERSION PATH_TO_ARTIFACTS [--replace]" >> /dev/stderr
+	exit 255
+fi
+
+if [ -z $3 ]; then
+
+  ./scripts/ghr -u nildev -r docker-services $1 $2
+
+else
+
+  ./scripts/ghr -u nildev -r docker-services --replace $1 $2
+
+fi

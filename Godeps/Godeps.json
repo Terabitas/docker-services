@@ -1,0 +1,27 @@
+{
+	"ImportPath": "github.com/nildev/docker-services",
+	"GoVersion": "go1.6",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/Sirupsen/logrus",
+			"Comment": "v0.10.0",
+			"Rev": "4b6ea7319e214d98c938f12692336f7ca9348d6b"
+		},
+		{
+			"ImportPath": "github.com/codegangsta/cli",
+			"Comment": "1.2.0-197-gcf1f63a",
+			"Rev": "cf1f63a7274872768d4037305d572b70b1199397"
+		},
+		{
+			"ImportPath": "github.com/coreos/go-semver/semver",
+			"Rev": "d043ae190b3202550d026daf009359bb5d761672"
+		},
+		{
+			"ImportPath": "github.com/nildev/lib/log",
+			"Rev": "69455085994b19ed782250cbc2e8e5c8dfd5059d"
+		}
+	]
+}
