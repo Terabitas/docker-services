@@ -10,13 +10,13 @@ dependencies:
 
     override:
         # Build darwin binary
-        - sudo docker-compose -f docker-compose-develop.yml run -e GOOS=darwin -e GOARCH=amd64 project ./build
+        - sudo docker-compose -f docker-compose-develop.yml run -e GOOS=darwin -e GOARCH=amd64 dockerServices ./build
 
         # Build darwin release
         - ./scripts/release $(./scripts/version) darwin --package-only
 
         # Build linux binary
-        - sudo docker-compose -f docker-compose-develop.yml run -e GOOS=linux -e GOARCH=amd64 project ./build
+        - sudo docker-compose -f docker-compose-develop.yml run -e GOOS=linux -e GOARCH=amd64 dockerServices ./build
 
         # Build linux release tarball
         - ./scripts/release $(./scripts/version) linux --package-only
