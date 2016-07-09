@@ -35,7 +35,7 @@ function package {
 		ext=".exe"
 	fi
 
-	for bin in project; do
+	for bin in docker-services; do
 		cp ${srcdir}/${bin} ${target}/${bin}${ext}
 	done
 }
