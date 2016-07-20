@@ -1,0 +1,11 @@
+dir: ~/dcs
+host: github.com
+verbosity: 4
+services:
+    "nildev/auth":
+        branch: master
+        compose_path: .
+        host: github.com
+        env: dev
+    "nginxinc/docker-nginx":
+        branch: master

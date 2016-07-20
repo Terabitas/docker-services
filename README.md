@@ -1,4 +1,4 @@
-# docker-services
+# docker-services - manage multiple `docker-compose.yml` configs
 
 `docker-services` is a tool which allows you to define and run dockerized applications. `docker-compose` allows you to 
 define containers required to run fully functional service and `docker-services` allows to define what services you want to run.
@@ -17,7 +17,7 @@ If you need to setup tens of services you will end up with some scripts that wil
 
 3) Install `docker-services`
 
-4) Create `docker-services.yml` file and define what services you want to run (use these sample ones to test this tool).
+4) Create `docker-services.yml` file and define what services you want to run (use this sample to test this tool).
 
 ```
 dir: ~/dcs
